@@ -1,0 +1,11 @@
+EDUTRACK FINAL QUESTION/RESPONSE SYSTEM
+
+1. Keep this project at C:\xampp\htdocs\EduTrack\
+2. Start Apache and MySQL in XAMPP.
+3. Open the website only through http://localhost/EduTrack/
+4. The backend automatically creates the teacher_questions table in the existing edutrack database when a Backend PHP endpoint is first opened.
+5. Student: Dashboard -> Ask Your Teacher -> choose an assigned teacher/subject -> send a school-related question.
+6. Teacher: Teacher Dashboard -> Student Questions -> open a pending question -> write and send a response.
+7. Student: My Questions shows pending/answered questions and teacher responses.
+8. Admin: the old student-to-student Messages portal has been removed. Admin keeps Teachers, Student Directory, and Announcements.
+9. Do not open HTML files with file:/// URLs; PHP requires the localhost server.

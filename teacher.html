@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduTrack — Teacher Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="teacher.html" class="navbar-brand"><span class="brand-icon">🎓</span> EduTrack</a>
+    <div class="navbar-links"><a href="teacher.html" class="active">Teacher Dashboard</a></div>
+    <div class="navbar-user">
+      <div class="navbar-avatar" id="teacherAvatar">TC</div>
+      <span class="navbar-user-name" id="teacherNavName">Teacher</span>
+      <button class="btn btn-ghost btn-sm" id="teacherLogoutBtn">Log Out</button>
+    </div>
+    <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
+  </div>
+  <div class="navbar-mobile" id="navbarMobile">
+    <a href="teacher.html">Teacher Dashboard</a>
+    <a href="#" id="mobileTeacherLogout">Log Out</a>
+  </div>
+</nav>
+
+<main class="dashboard-page">
+<div class="container">
+  <div class="dashboard-welcome teacher-hero">
+    <span class="eyebrow">Teacher portal</span>
+    <h2 id="teacherWelcome">Loading teacher information...</h2>
+    <p>Create assignments for your assigned classes and subjects.</p>
+  </div>
+
+  <div class="teacher-layout">
+    <section class="card">
+      <div class="card-header"><h4>🏫 My Classes</h4><p>Your classes and subjects assigned by the administrator.</p></div>
+      <div id="classesContainer"><div class="empty-state"><div class="empty-state-icon">🏫</div><p>Loading your classes...</p></div></div>
+    </section>
+
+    <section class="card">
+      <div class="card-header"><h4>📝 Create Assignment</h4><p>Publish homework or classwork to one of your classes.</p></div>
+      <form id="assignmentForm">
+        <div class="form-group">
+  <label class="form-label" for="assignmentClass">Class</label>
+  <select class="form-control" id="assignmentClass" required>
+    <option value="">Select a class</option>
+  </select>
+</div>
+<div class="form-group">
+  <label class="form-label" for="assignmentSubject">Subject</label>
+  <select class="form-control" id="assignmentSubject" required disabled>
+    <option value="">Select a class first</option>
+  </select>
+</div>
+        <div class="form-group"><label class="form-label">Assignment Title</label><input class="form-control" type="text" id="assignmentTitle" maxlength="255" placeholder="e.g. Algebra Homework" required></div>
+        <div class="form-group"><label class="form-label">Description</label><textarea class="form-control" id="assignmentDescription" rows="5" placeholder="Write the assignment instructions..."></textarea></div>
+        <div class="form-group"><label class="form-label">Due Date</label><input class="form-control" type="date" id="assignmentDueDate" required></div>
+        <button class="btn btn-primary btn-block" type="submit">Publish Assignment</button>
+      </form>
+      <p id="assignmentMessage" class="admin-message"></p>
+    </section>
+  </div>
+
+  <section class="card dashboard-section">
+    <div class="card-header flex-between"><div><h4>💬 Student Questions</h4><p>Answer school-related questions from students in your assigned classes.</p></div><span class="badge badge-primary" id="teacherQuestionCount">0</span></div>
+    <div id="teacherQuestionsList"><div class="empty-state"><div class="empty-state-icon">💬</div><p>Loading student questions...</p></div></div>
+  </section>
+
+  <section class="card dashboard-section">
+    <div class="card-header flex-between"><div><h4>📚 Published Assignments</h4><p>Your recent assignments.</p></div><span class="badge badge-primary" id="teacherAssignmentCount">0</span></div>
+    <div id="teacherAssignmentsList"><div class="empty-state"><p>Loading assignments...</p></div></div>
+  </section>
+</div>
+</main>
+<script src="main.js"></script>
+<script src="teacher.js"></script>
+</body>
+</html>

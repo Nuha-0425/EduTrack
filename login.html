@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — EduTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand"><span class="brand-icon">🎓</span> EduTrack</a>
+      <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="register.html">Register</a>
+        <a href="login.html" class="active">Login</a>
+      </div>
+      <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
+    </div>
+    <div class="navbar-mobile" id="navbarMobile">
+      <a href="index.html">Home</a><a href="register.html">Register</a><a href="login.html">Login</a>
+    </div>
+  </nav>
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-icon">🔐</div>
+        <h2>Welcome Back</h2>
+        <p>Sign in to access your student dashboard.</p>
+      </div>
+      <div id="formAlert" class="alert hidden" role="alert"></div>
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" class="form-control" placeholder="your@email.com" autocomplete="email" autofocus />
+          <div class="form-error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <input type="password" id="password" class="form-control" placeholder="Your password" autocomplete="current-password" />
+            <button type="button" class="input-toggle-btn" id="togglePassword">👁️</button>
+          </div>
+          <div class="form-error" id="passwordError"></div>
+        </div>
+
+        <div style="margin-top: var(--spacing-xl);">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Sign In</button>
+        </div>
+      </form>
+      <p class="auth-footer-text">Don't have an account? <a href="register.html">Create one here</a></p>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

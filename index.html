@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTrack — Student Registration System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🎓</span>
+        EduTrack
+      </a>
+      <div class="navbar-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
+      </div>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar-mobile" id="navbarMobile">
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+  <section class="hero">
+    <p class="hero-subtitle">Student Management Made Simple</p>
+    <h1>Welcome to EduTrack</h1>
+    <p>
+      A simple, secure, and beginner-friendly student registration system.
+      Register your students, manage profiles, and search records — all in one place.
+    </p>
+    <div class="hero-buttons">
+      <a href="register.html" class="btn btn-primary btn-lg">Get Started </a>
+      <a href="login.html"    class="btn btn-outline btn-lg">Sign In</a>
+    </div>
+  </section>
+  <section class="features-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Everything You Need</h2>
+        <p>Easy to understand and learn from.</p>
+      </div>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Easy Registration</h3>
+          <p>Students can sign up with their basic information. All inputs are validated before submission.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <h3>Secure Login</h3>
+          <p>Session tokens keep each student's data private. Only the logged-in student can see and edit their profile.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Student Search</h3>
+          <p>Quickly find any student by their name or Student ID.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✏️</div>
+          <h3>Edit Profile</h3>
+          <p>Students can update their contact information, grade, and personal details at any time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Responsive Design</h3>
+          <p>Works perfectly on phones, tablets, and computers.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💡</div>
+          <h3>Beginner Friendly</h3>
+          <p>Every file is thoroughly commented so you can understand exactly how everything works.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="background: var(--color-primary-light); padding: 4rem var(--spacing-lg); text-align: center;">
+    <div class="container">
+      <h2 style="color: var(--color-primary); margin-bottom: var(--spacing-md);">Ready to Get Started?</h2>
+      <p style="max-width: 500px; margin: 0 auto var(--spacing-xl);">
+        Create your student account in minutes.
+      </p>
+      <div class="flex-center gap-md" style="flex-wrap: wrap;">
+        <a href="register.html" class="btn btn-primary btn-lg">Create Account</a>
+        <a href="login.html"    class="btn btn-outline btn-lg">Already have an account?</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <p>© 2026 EduTrack School ManagementSystem.</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    Auth.redirectIfLoggedIn();
+  </script>
+</body>
+</html>

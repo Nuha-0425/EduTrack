@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — EduTrack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="dashboard.html" class="navbar-brand"><span class="brand-icon">🎓</span> EduTrack</a>
+    <div class="navbar-links">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="profile.html">My Profile</a>
+    </div>
+    <div class="navbar-user">
+      <div class="notification-wrapper">
+        <button class="notification-btn" id="notificationBtn" aria-label="Notifications" title="Notifications">
+          🔔
+          <span class="notification-badge" id="notificationBadge" style="display:none;">0</span>
+        </button>
+        <div class="notification-dropdown" id="notificationDropdown">
+          <div class="notification-header">
+            <h4>Notifications</h4>
+            <span class="notification-count" id="notificationCountText">No new notifications</span>
+          </div>
+          <div class="notification-list" id="notificationList">
+            <div class="notification-empty"><div>🔔</div><p>Loading notifications...</p></div>
+          </div>
+          <div class="notification-footer">
+            <button type="button" id="markNotificationsRead">Mark all as read</button>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-avatar" id="navAvatar">JD</div>
+      <span class="navbar-user-name" id="navUserName">Loading...</span>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn">Log Out</button>
+    </div>
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="navbar-mobile" id="navbarMobile">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="profile.html">My Profile</a>
+    <a href="#" id="mobileLogoutBtn">Log Out</a>
+  </div>
+</nav>
+
+<main class="dashboard-page">
+  <div class="container">
+    <div class="dashboard-welcome">
+      <h2 id="welcomeMessage">Welcome back! 👋</h2>
+      <p id="welcomeSubtext">Here's an overview of your account.</p>
+    </div>
+
+    <div class="dashboard-section">
+      <div class="card">
+        <div class="card-header flex-between">
+          <div><h4>My Information</h4><p>Your registered student details.</p></div>
+          <a href="profile.html" class="btn btn-outline btn-sm">Edit Profile</a>
+        </div>
+        <div class="info-row"><span class="info-label">Full Name</span><span class="info-value" id="infoName">—</span></div>
+        <div class="info-row"><span class="info-label">Student ID</span><span class="info-value" id="infoStudentId">—</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-value" id="infoEmail">—</span></div>
+        <div class="info-row"><span class="info-label">Phone</span><span class="info-value" id="infoPhone">—</span></div>
+        <div class="info-row"><span class="info-label">Grade</span><span class="info-value" id="infoGrade">—</span></div>
+        <div class="info-row"><span class="info-label">Section</span><span class="info-value" id="infoSection">—</span></div>
+        <div class="info-row"><span class="info-label">Date of Birth</span><span class="info-value" id="infoDOB">—</span></div>
+        <div class="info-row"><span class="info-label">Gender</span><span class="info-value" id="infoGender">—</span></div>
+        <div class="info-row"><span class="info-label">Member Since</span><span class="info-value" id="infoJoined">—</span></div>
+      </div>
+    </div>
+
+    <div class="dashboard-section">
+      <div class="card">
+        <div class="card-header flex-between">
+          <div><h4>📢 School Announcements</h4><p>Important information from the school.</p></div>
+          <span class="badge badge-primary" id="announcementCount">0</span>
+        </div>
+        <div id="announcementsList">
+          <div class="empty-state"><div class="empty-state-icon">📢</div><p>Loading announcements...</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-section" id="assignmentsSection">
+      <div class="card">
+        <div class="card-header flex-between">
+          <div><h4>📚 My Assignments</h4><p>Assignments from your teachers for your class.</p></div>
+          <span class="badge badge-primary" id="assignmentCount">0</span>
+        </div>
+        <div id="studentAssignments">
+          <div class="empty-state"><div class="empty-state-icon">📚</div><p>Loading assignments...</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-section">
+      <div class="card">
+        <div class="card-header flex-between">
+          <div><h4>🤖 Ask Your Teacher</h4><p>Send a school-related question directly to a teacher assigned to your class.</p></div>
+          <span class="badge badge-primary" id="questionCount">0</span>
+        </div>
+        <form id="teacherQuestionForm" class="question-form">
+          <div class="form-group">
+            <label class="form-label" for="questionTeacher">Teacher & Subject</label>
+            <select class="form-control" id="questionTeacher" required>
+              <option value="">Loading your teachers...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="teacherQuestionText">Your Question</label>
+            <textarea class="form-control" id="teacherQuestionText" rows="4" maxlength="2000" required placeholder="Ask a clear, school-related question..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" id="sendTeacherQuestionBtn">Send Question</button>
+          <p id="teacherQuestionStatus" class="admin-message"></p>
+        </form>
+        <div class="card-header" style="margin-top:1.5rem;"><h4>💬 My Questions</h4><p>See questions you have sent and responses from your teachers.</p></div>
+        <div id="teacherQuestionsList"><div class="empty-state"><div class="empty-state-icon">💬</div><p>Loading your questions...</p></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="main.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

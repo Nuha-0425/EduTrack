@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduTrack — Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="admin.html" class="navbar-brand"><span class="brand-icon">🎓</span> EduTrack</a>
+    <div class="navbar-links">
+      <a href="admin.html" class="active">Admin Dashboard</a>
+    </div>
+    <div class="navbar-user">
+      <div class="navbar-avatar">AD</div>
+      <span class="navbar-user-name">Administrator</span>
+      <button class="btn btn-ghost btn-sm" id="adminLogoutBtn">Log Out</button>
+    </div>
+    <button class="navbar-toggle" id="navbarToggle"><span></span><span></span><span></span></button>
+  </div>
+  <div class="navbar-mobile" id="navbarMobile">
+    <a href="admin.html">Admin Dashboard</a>
+    <a href="#" id="mobileAdminLogout">Log Out</a>
+  </div>
+</nav>
+
+<main class="dashboard-page">
+<div class="container admin-container">
+  <div class="dashboard-welcome admin-hero">
+    <div>
+      <span class="eyebrow">School management</span>
+      <h2>Admin Dashboard</h2>
+      <p id="adminMessage">Checking admin access...</p>
+    </div>
+  </div>
+
+  <div class="admin-stat-grid">
+    <div class="stat-card"><div class="stat-number" id="studentStat">—</div><div class="stat-label">Students</div></div>
+    <div class="stat-card"><div class="stat-number" id="teacherStat">—</div><div class="stat-label">Teachers</div></div>
+    <div class="stat-card"><div class="stat-number" id="announcementStat">—</div><div class="stat-label">Announcements</div></div>
+  </div>
+
+  <div class="admin-tab-grid admin-tab-grid">
+    <button class="admin-tab active" data-panel="teachersPanel">👩‍🏫 Teachers</button>
+    <button class="admin-tab" data-panel="studentsPanel">🎓 Students</button>
+    <button class="admin-tab" data-panel="announcementsPanel">📢 Announcements</button>
+  </div>
+
+  <section class="admin-panel active" id="teachersPanel">
+    <div class="admin-panel-header">
+      <div><h3>Teacher Management</h3><p>Create teacher accounts and assign them to classes and subjects.</p></div>
+      <button class="btn btn-primary" id="teachersBtn">+ Add Teacher</button>
+    </div>
+
+    <div class="admin-form-card" id="teacherFormContainer" style="display:none;">
+      <div class="admin-form-title"><h4>Add New Teacher</h4><button type="button" class="icon-close" id="cancelTeacherBtn">×</button></div>
+      <form id="teacherForm" class="admin-form-grid">
+        <div class="form-group"><label class="form-label">First Name</label><input class="form-control" id="teacherFirstName" required></div>
+        <div class="form-group"><label class="form-label">Last Name</label><input class="form-control" id="teacherLastName" required></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-control" type="email" id="teacherEmail" required></div>
+        <div class="form-group"><label class="form-label">Teacher ID</label><input class="form-control" id="teacherId" placeholder="Example: T-1001" required></div>
+        <div class="form-group"><label class="form-label">Password</label><input class="form-control" type="password" id="teacherPassword" required></div>
+        <div class="admin-form-actions"><button class="btn btn-primary" type="submit">Create Teacher</button><button class="btn btn-ghost" type="button" id="cancelTeacherBtn2">Cancel</button></div>
+      </form>
+      <p id="teacherFormMessage" class="admin-message"></p>
+    </div>
+
+    <div class="admin-two-column">
+      <div class="admin-list-card">
+        <div class="card-header"><h4>Teachers</h4><p id="teacherListStatus">Loading teachers...</p></div>
+        <div id="teacherList"></div>
+      </div>
+      <div class="admin-list-card">
+        <div class="card-header"><h4>Assign Teacher</h4><p>Connect a teacher to one class and subject.</p></div>
+        <form id="assignmentForm">
+          <div class="form-group"><label class="form-label">Teacher</label><select class="form-control" id="assignmentTeacher" required><option value="">Select Teacher</option></select></div>
+          <div class="form-group"><label class="form-label">Class</label><select class="form-control" id="assignmentClass" required><option value="">Select Class</option></select></div>
+          <div class="form-group"><label class="form-label">Subject</label><select class="form-control" id="assignmentSubject" required><option value="">Select a class first</option></select></div>
+          <button class="btn btn-primary btn-block" type="submit">Assign Teacher</button>
+          <p id="assignmentMessage" class="admin-message"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-panel" id="studentsPanel">
+    <div class="admin-panel-header">
+      <div><h3>Student Directory</h3><p>Search registered students by name, ID, or email.</p></div>
+      <button class="btn btn-outline" id="refreshStudentsBtn">Refresh</button>
+    </div>
+    <div class="search-bar admin-search">
+      <input class="form-control" id="adminStudentSearch" placeholder="Search students...">
+      <button class="btn btn-primary" id="adminStudentSearchBtn">Search</button>
+    </div>
+    <p id="studentStatus" class="admin-message"></p>
+    <div class="student-table-wrapper">
+      <table class="student-table"><thead><tr><th>Student</th><th>ID</th><th>Grade</th><th>Section</th><th>Email</th><th>Phone</th></tr></thead><tbody id="adminStudentsBody"></tbody></table>
+    </div>
+  </section>
+
+  <section class="admin-panel" id="announcementsPanel">
+    <div class="admin-panel-header">
+      <div><h3>School Announcements</h3><p>Publish information that appears on student dashboards and notifications.</p></div>
+    </div>
+    <div class="admin-two-column">
+      <div class="admin-form-card always-visible">
+        <h4>Create Announcement</h4>
+        <form id="announcementForm">
+          <div class="form-group"><label class="form-label">Title</label><input class="form-control" id="announcementTitle" maxlength="255" required placeholder="e.g. School closes Friday"></div>
+          <div class="form-group"><label class="form-label">Message</label><textarea class="form-control" id="announcementContent" rows="6" required placeholder="Write the announcement..."></textarea></div>
+          <button class="btn btn-primary btn-block" type="submit">Publish Announcement</button>
+          <p id="announcementMessage" class="admin-message"></p>
+        </form>
+      </div>
+      <div class="admin-list-card">
+        <div class="card-header"><h4>Published</h4><p>Newest announcements appear first.</p></div>
+        <div id="adminAnnouncementsList"></div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+<script src="main.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
